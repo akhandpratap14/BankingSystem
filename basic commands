@@ -1,0 +1,141 @@
+#include<iostream>
+
+using namespace std;
+
+class Account{
+
+    public:
+
+        int Amount;
+        int const pin = 2242;
+        int PIN;
+        int accNumber,accType;
+        int Balance;
+        char Name[15];
+        get();
+        print(void);
+        withAmount();
+
+};
+
+class currAccount : public Account{
+
+    public:
+        void panelty(){
+
+    if(Balance < 200 && accType == 2)
+    {
+
+    Balance = Balance - 20;
+    print();
+
+    }
+    }
+};
+
+class saveAccount : public Account{
+    
+    public:
+
+        interest();
+};
+
+Account :: get(){
+
+    cout<<"Please Enter The Details"<<endl;
+    cout<<endl;
+
+    cout<<"Customer Name :";
+    cin>>Name;
+
+    cout<<endl;
+
+    cout<<"Account number :";
+    cin>>accNumber;
+
+    cout<<endl;
+
+    cout<<"Select The Type Of Account"<<endl<<"1. Saving Account"<<endl<<endl<<"2.Current Account"<<endl<<endl;
+    cin>>accType;
+
+    cout<<endl;
+
+    cout<<"Account balance:";
+    cin>>Balance;
+
+    cout<<endl;
+
+    return 0;
+}
+
+Account :: print(){
+
+    cout<<"Account Balance is :"<<Balance;
+    cout<<endl;
+    cout<<endl;
+
+    return 0;
+}
+
+Account :: withAmount(){
+
+    cout<<"Enter the amount :";
+    cin>>Amount;
+
+    cout<<endl;
+
+    cout<<"Enter The four Digit Pin : ";
+    cin>>PIN;
+
+    cout<<endl;
+
+    if (PIN != pin){
+
+        cout<<"Incorrect Pin. Please Enter Correct Pin...!";
+
+        cout<<endl;
+        cout<<endl;
+
+        Account :: withAmount();
+    }
+
+    else
+
+        if(Amount > Balance)
+
+        cout<<"Insuficient balance";
+
+        else
+
+        Balance = Balance - Amount;
+
+        print();
+
+        return 0;
+}
+
+saveAccount :: interest(){
+
+    int t;
+    cout<<endl;
+
+    cout<<"Enter time interval in year:";
+    cin>>t;
+
+    Balance = Balance * ( 1 + 2 * t );
+
+    print();
+
+    return 0;
+}
+
+int main(){
+
+    Account A;
+    A.get();
+    A.print();
+    A.withAmount();
+
+    return 0;
+
+}
